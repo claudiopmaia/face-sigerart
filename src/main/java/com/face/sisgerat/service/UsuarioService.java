@@ -123,7 +123,8 @@ public class UsuarioService implements UserDetailsService {
 	
 	public void emailDeConfirmacaoDeCadastro(String email) throws MessagingException {
 		String codigo = Base64Utils.encodeToString(email.getBytes());
-		emailService.enviarPedidoDeConfirmacaoDeCadastro(email, codigo);
+		System.out.println("*************************************************" + codigo);
+		//emailService.enviarPedidoDeConfirmacaoDeCadastro(email, codigo);
 	}
 	
 	@Transactional(readOnly = false)

@@ -39,7 +39,7 @@ public class EmailService {
 		
 		helper.addInline("logo", new ClassPathResource("/static/image/spring-security.png"));
 		
-		mailSender.send(message);
+		//mailSender.send(message);
 	}
 	
 	public void enviarPedidoRedefinicaoSenha(String destino, String verificador) throws MessagingException {
@@ -61,6 +61,6 @@ public class EmailService {
 
         helper.addInline("logo", new ClassPathResource("/static/image/spring-security.png"));  
        
-        mailSender.send(message);		
+        //mailSender.send(message);		
 	}
 }
