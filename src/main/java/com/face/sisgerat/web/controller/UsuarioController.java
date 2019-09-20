@@ -24,10 +24,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.face.sisgerat.domain.Medico;
 import com.face.sisgerat.domain.Perfil;
-import com.face.sisgerat.domain.PerfilTipo;
 import com.face.sisgerat.domain.Usuario;
+import com.face.sisgerat.domain.enums.PerfilTipoEnum;
 import com.face.sisgerat.service.MedicoService;
 import com.face.sisgerat.service.UsuarioService;
+
 
 @Controller
 @RequestMapping("u")
@@ -92,17 +93,17 @@ public class UsuarioController {
     												   @PathVariable("perfis") Long[] perfisId) {
     	Usuario us = service.buscarPorIdEPerfis(usuarioId, perfisId);
     	
-    	if (us.getPerfis().contains(new Perfil(PerfilTipo.ADMIN.getCod())) &&
-    		!us.getPerfis().contains(new Perfil(PerfilTipo.MEDICO.getCod())) ) {
+    	if (us.getPerfis().contains(new Perfil(PerfilTipoEnum.ADMIN.getCod())) &&
+    		!us.getPerfis().contains(new Perfil(PerfilTipoEnum.MEDICO.getCod())) ) {
     		
     		return new ModelAndView("usuario/cadastro", "usuario", us);
-    	} else if (us.getPerfis().contains(new Perfil(PerfilTipo.MEDICO.getCod()))) {
+    	} else if (us.getPerfis().contains(new Perfil(PerfilTipoEnum.MEDICO.getCod()))) {
     		
     		Medico medico = medicoService.buscarPorUsuarioId(usuarioId);
     		return medico.hasNotId()
     				? new ModelAndView("medico/cadastro", "medico", new Medico(new Usuario(usuarioId)))
     				: new ModelAndView("medico/cadastro", "medico", medico);
-    	} else if (us.getPerfis().contains(new Perfil(PerfilTipo.PACIENTE.getCod()))) {
+    	} else if (us.getPerfis().contains(new Perfil(PerfilTipoEnum.PACIENTE.getCod()))) {
     		ModelAndView model = new ModelAndView("error");
     		model.addObject("status", 403);
     		model.addObject("error", "Área Restrita");

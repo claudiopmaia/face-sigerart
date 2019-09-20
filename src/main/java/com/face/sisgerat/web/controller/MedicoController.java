@@ -26,17 +26,17 @@ public class MedicoController {
 	@Autowired
 	private UsuarioService usuarioService;
 
-	// abrir pagina de dados pessoais de medicos pelo MEDICO
+	// abrir pagina de dados pessoais de Medicos pelo Medico
 	@GetMapping({"/dados"})
 	public String abrirPorMedico(Medico medico, ModelMap model, @AuthenticationPrincipal User user) {
 		if (medico.hasNotId()) {
 			medico = service.buscarPorEmail(user.getUsername());
-			model.addAttribute("medico", medico);
+			model.addAttribute("Medico", medico);
 		}
 		return "medico/cadastro";
 	}
 	
-	// salvar medico
+	// salvar Medico
 	@PostMapping({"/salvar"})
 	public String salvar(Medico medico, RedirectAttributes attr, @AuthenticationPrincipal User user) {
 		if (medico.hasNotId() && medico.getUsuario().hasNotId()) {
@@ -45,20 +45,20 @@ public class MedicoController {
 		}
 		service.salvar(medico);
 		attr.addFlashAttribute("sucesso", "Operação realizada com sucesso.");
-		attr.addFlashAttribute("medico", medico);
+		attr.addFlashAttribute("Medico", medico);
 		return "redirect:/medicos/dados";
 	}
 	
-	// editar medico
+	// editar Medico
 	@PostMapping({"/editar"})
 	public String editar(Medico medico, RedirectAttributes attr) {
 		service.editar(medico);
 		attr.addFlashAttribute("sucesso", "Operação realizada com sucesso.");
-		attr.addFlashAttribute("medico", medico);
+		attr.addFlashAttribute("Medico", medico);
 		return "redirect:/medicos/dados";		
 	}
 	
-	// excluir especialidade
+	// excluir Especialidade
 	@GetMapping({"/id/{idMed}/excluir/especializacao/{idEsp}"})
 	public String excluirEspecialidadePorMedico(@PathVariable("idMed") Long idMed, 
 						 @PathVariable("idEsp") Long idEsp, RedirectAttributes attr) {
@@ -72,7 +72,7 @@ public class MedicoController {
 		return "redirect:/medicos/dados";		
 	}
 	
-	// buscar medicos por especialidade via ajax
+	// buscar Medicos por Especialidade via ajax
 	@GetMapping("/especialidade/titulo/{titulo}")
 	public ResponseEntity<?> getMedicosPorEspecialidade(@PathVariable("titulo") String titulo) {
 		return ResponseEntity.ok(service.buscarMedicosPorEspecialidade(titulo));

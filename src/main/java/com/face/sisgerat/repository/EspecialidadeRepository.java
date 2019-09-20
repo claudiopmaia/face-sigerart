@@ -22,7 +22,7 @@ public interface EspecialidadeRepository extends JpaRepository<Especialidade, Lo
 	Set<Especialidade> findByTitulos(String[] titulos);
 
 	@Query("select e from Especialidade e "
-			+ "join e.medicos m "
+			+ "join e.Medicos m "
 			+ "where m.id = :id") 
 	Page<Especialidade> findByIdMedico(Long id, Pageable pageable);
 

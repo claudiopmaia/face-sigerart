@@ -8,16 +8,16 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import com.face.sisgerat.domain.PerfilTipo;
+import com.face.sisgerat.domain.enums.PerfilTipoEnum;
 import com.face.sisgerat.service.UsuarioService;
 
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 @EnableWebSecurity 
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
-	private static final String ADMIN = PerfilTipo.ADMIN.getDesc();
-    private static final String MEDICO = PerfilTipo.MEDICO.getDesc();
-    private static final String PACIENTE = PerfilTipo.PACIENTE.getDesc();
+	private static final String ADMIN = PerfilTipoEnum.ADMIN.getDesc();
+    private static final String MEDICO = PerfilTipoEnum.MEDICO.getDesc();
+    private static final String PACIENTE = PerfilTipoEnum.PACIENTE.getDesc();
 	
 	@Autowired
 	private UsuarioService service;

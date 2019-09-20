@@ -2,11 +2,17 @@ package com.face.sisgerat.domain;
 
 import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Index;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
 @SuppressWarnings("serial")
 @Entity
-@Table(name = "especialidades", indexes = {@Index(name = "idx_especialidade_titulo", columnList = "titulo")})
+@Table(name = "Especialidades", indexes = {@Index(name = "idx_Especialidade_titulo", columnList = "titulo")})
 public class Especialidade extends AbstractEntity {
 	
 	@Column(name = "titulo", unique = true, nullable = false)
@@ -17,11 +23,11 @@ public class Especialidade extends AbstractEntity {
 	
 	@ManyToMany
 	@JoinTable(
-			name = "medicos_tem_especialidades",
-			joinColumns = @JoinColumn(name = "id_especialidade", referencedColumnName = "id"),
-			inverseJoinColumns = @JoinColumn(name = "id_medico", referencedColumnName = "id")
+			name = "Medicos_tem_Especialidades",
+			joinColumns = @JoinColumn(name = "id_Especialidade", referencedColumnName = "id"),
+			inverseJoinColumns = @JoinColumn(name = "id_Medico", referencedColumnName = "id")
     )
-	private List<Medico> medicos;	
+	private List<Medico> Medicos;	
 
 	public String getTitulo() {
 		return titulo;
@@ -40,10 +46,10 @@ public class Especialidade extends AbstractEntity {
 	}
 
 	public List<Medico> getMedicos() {
-		return medicos;
+		return Medicos;
 	}
 
-	public void setMedico(List<Medico> medicos) {
-		this.medicos = medicos;
+	public void setMedico(List<Medico> Medicos) {
+		this.Medicos = Medicos;
 	}
 }

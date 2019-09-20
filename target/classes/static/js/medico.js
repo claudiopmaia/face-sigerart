@@ -1,4 +1,4 @@
-// processa o auto-complete de especialidades
+// processa o auto-complete de Especialidades
 $(function() {
 	// remove o espaco depois da virgula
 	function split(val) {
@@ -16,7 +16,7 @@ $(function() {
 			.append('<input type="hidden" value="'+ titulo +'" name="especialidades">');
 	}
 	
-	// mostra na pagina um toast com mensagem de especialidades repetidas 
+	// mostra na pagina um toast com mensagem de Especialidades repetidas 
     function exibeMessagem(texto) {
         $('.add-toast').append(""
           .concat('<div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="2800">',

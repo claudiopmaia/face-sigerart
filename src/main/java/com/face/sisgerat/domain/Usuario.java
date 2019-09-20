@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.face.sisgerat.domain.enums.PerfilTipoEnum;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @SuppressWarnings("serial")
@@ -42,7 +43,7 @@ public class Usuario extends AbstractEntity {
 	}
 
 	// adiciona perfis a lista
-	public void addPerfil(PerfilTipo tipo) {
+	public void addPerfil(PerfilTipoEnum tipo) {
 		if (this.perfis == null) {
 			this.perfis = new ArrayList<>();
 		}

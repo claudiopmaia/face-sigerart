@@ -23,8 +23,8 @@ import org.springframework.util.Base64Utils;
 import com.face.sisgerat.datatables.Datatables;
 import com.face.sisgerat.datatables.DatatablesColunas;
 import com.face.sisgerat.domain.Perfil;
-import com.face.sisgerat.domain.PerfilTipo;
 import com.face.sisgerat.domain.Usuario;
+import com.face.sisgerat.domain.enums.PerfilTipoEnum;
 import com.face.sisgerat.exception.AcessoNegadoException;
 import com.face.sisgerat.repository.UsuarioRepository;
 
@@ -109,7 +109,7 @@ public class UsuarioService implements UserDetailsService {
 	public void salvarCadastroPaciente(Usuario usuario) throws MessagingException {
 		String crypt = new BCryptPasswordEncoder().encode(usuario.getSenha());
 		usuario.setSenha(crypt);
-		usuario.addPerfil(PerfilTipo.PACIENTE);
+		usuario.addPerfil(PerfilTipoEnum.PACIENTE);
 		repository.save(usuario);	
 		
 		emailDeConfirmacaoDeCadastro(usuario.getEmail());
@@ -124,7 +124,7 @@ public class UsuarioService implements UserDetailsService {
 	public void emailDeConfirmacaoDeCadastro(String email) throws MessagingException {
 		String codigo = Base64Utils.encodeToString(email.getBytes());
 		System.out.println("*************************************************" + codigo);
-		//emailService.enviarPedidoDeConfirmacaoDeCadastro(email, codigo);
+		emailService.enviarPedidoDeConfirmacaoDeCadastro(email, codigo);
 	}
 	
 	@Transactional(readOnly = false)

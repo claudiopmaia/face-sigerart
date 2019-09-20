@@ -25,15 +25,15 @@ public class EspecialidadeService {
 	private Datatables datatables;
 
 	@Transactional(readOnly = false)
-	public void salvar(Especialidade especialidade) {
+	public void salvar(Especialidade Especialidade) {
 		
-		repository.save(especialidade);
+		repository.save(Especialidade);
 	}
 
 	@Transactional(readOnly = true)
 	public Map<String, Object> buscarEspecialidades(HttpServletRequest request) {
 		datatables.setRequest(request);
-		datatables.setColunas(DatatablesColunas.ESPECIALIDADES);
+		datatables.setColunas(DatatablesColunas.EspecialidadeS);
 		Page<?> page = datatables.getSearch().isEmpty()
 				? repository.findAll(datatables.getPageable())
 				: repository.findAllByTitulo(datatables.getSearch(), datatables.getPageable());
@@ -67,7 +67,7 @@ public class EspecialidadeService {
 	@Transactional(readOnly = true)
 	public Map<String, Object> buscarEspecialidadesPorMedico(Long id, HttpServletRequest request) {
 		datatables.setRequest(request);
-		datatables.setColunas(DatatablesColunas.ESPECIALIDADES);
+		datatables.setColunas(DatatablesColunas.EspecialidadeS);
 		Page<Especialidade> page = repository.findByIdMedico(id, datatables.getPageable()); 
 		return datatables.getResponse(page);
 	}

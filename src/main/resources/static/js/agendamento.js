@@ -1,5 +1,5 @@
 /**
- * busca as especialidades com auto-complete
+ * busca as Especialidades com auto-complete
  */
 $("#especialidade").autocomplete({
     source: function (request, response) {
@@ -17,7 +17,7 @@ $("#especialidade").autocomplete({
 });
 
 /**
- * após a especialidade ser selecionado busca 
+ * após a Especialidade ser selecionado busca 
  * os médicos referentes e os adiciona na página com
  * radio
  */
@@ -76,7 +76,7 @@ $('#data').on('blur', function () {
 */
 $(document).ready(function() {
     moment.locale('pt-BR');
-    var table = $('#table-paciente-historico').DataTable({
+    var table = $('#table-Paciente-historico').DataTable({
         searching : false,
         lengthMenu : [ 5, 10 ],
         processing : true,
@@ -89,14 +89,14 @@ $(document).ready(function() {
         },
         columns : [
             {data : 'id'},
-            {data : 'paciente.nome'},
+            {data : 'Paciente.nome'},
             {data: 'dataConsulta', render:
                 function( dataConsulta ) {
                     return moment(dataConsulta).format('LLL');
                 }
             },
-            {data : 'medico.nome'},
-            {data : 'especialidade.titulo'},
+            {data : 'Medico.nome'},
+            {data : 'Especialidade.titulo'},
             {orderable : false,	data : 'id', "render" : function(id) {
                     return '<a class="btn btn-success btn-sm btn-block" href="/agendamentos/editar/consulta/'
                             + id + '" role="button"><i class="fas fa-edit"></i></a>';

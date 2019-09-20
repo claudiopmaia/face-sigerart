@@ -18,17 +18,23 @@ public class PacienteService {
 		
 		return repository.findByUsuarioEmail(email).orElse(new Paciente());
 	}
-
-	@Transactional(readOnly = false)
-	public void salvar(Paciente paciente) {
+	
+	@Transactional(readOnly = true)
+	public Paciente buscarPorPacienteEmailAndAtivo(String email) {
 		
-		repository.save(paciente);		
+		return repository.findByPacienteEmailAndAtivo(email).orElse(new Paciente());
 	}
 
 	@Transactional(readOnly = false)
-	public void editar(Paciente paciente) {
-		Paciente p2 = repository.findById(paciente.getId()).get();
-		p2.setNome(paciente.getNome());
-		p2.setDtNascimento(paciente.getDtNascimento());		
+	public void salvar(Paciente Paciente) {
+		
+		repository.save(Paciente);		
+	}
+
+	@Transactional(readOnly = false)
+	public void editar(Paciente Paciente) {
+		Paciente p2 = repository.findById(Paciente.getId()).get();
+		p2.setNome(Paciente.getNome());
+		p2.setDtNascimento(Paciente.getDtNascimento());		
 	}
 }

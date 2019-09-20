@@ -23,7 +23,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.face.sisgerat.domain.Agendamento;
 import com.face.sisgerat.domain.Especialidade;
 import com.face.sisgerat.domain.Paciente;
-import com.face.sisgerat.domain.PerfilTipo;
+import com.face.sisgerat.domain.enums.PerfilTipoEnum;
 import com.face.sisgerat.service.AgendamentoService;
 import com.face.sisgerat.service.EspecialidadeService;
 import com.face.sisgerat.service.PacienteService;
@@ -87,12 +87,12 @@ public class AgendamentoController {
 	public ResponseEntity<?> historicoAgendamentosPorPaciente(HttpServletRequest request, 
 															  @AuthenticationPrincipal User user) {
 		
-		if (user.getAuthorities().contains(new SimpleGrantedAuthority(PerfilTipo.PACIENTE.getDesc()))) {
+		if (user.getAuthorities().contains(new SimpleGrantedAuthority(PerfilTipoEnum.PACIENTE.getDesc()))) {
 			
 			return ResponseEntity.ok(service.buscarHistoricoPorPacienteEmail(user.getUsername(), request));
 		}
 		
-		if (user.getAuthorities().contains(new SimpleGrantedAuthority(PerfilTipo.MEDICO.getDesc()))) {
+		if (user.getAuthorities().contains(new SimpleGrantedAuthority(PerfilTipoEnum.MEDICO.getDesc()))) {
 			
 			return ResponseEntity.ok(service.buscarHistoricoPorMedicoEmail(user.getUsername(), request));
 		}		

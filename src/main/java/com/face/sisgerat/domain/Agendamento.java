@@ -12,16 +12,16 @@ import java.time.LocalDate;
 public class Agendamento extends AbstractEntity {
 	
 	@ManyToOne
-	@JoinColumn(name="id_especialidade")
-	private Especialidade especialidade;
+	@JoinColumn(name="id_Especialidade")
+	private Especialidade Especialidade;
 	
 	@ManyToOne
-	@JoinColumn(name="id_medico")
-	private Medico medico;
+	@JoinColumn(name="id_Medico")
+	private Medico Medico;
 	
 	@ManyToOne
-	@JoinColumn(name="id_paciente")
-	private Paciente paciente;
+	@JoinColumn(name="id_Paciente")
+	private Paciente Paciente;
 	
 	@ManyToOne
 	@JoinColumn(name="id_horario")
@@ -32,27 +32,27 @@ public class Agendamento extends AbstractEntity {
 	private LocalDate dataConsulta;
 	
 	public Especialidade getEspecialidade() {
-		return especialidade;
+		return Especialidade;
 	}
 
-	public void setEspecialidade(Especialidade especialidade) {
-		this.especialidade = especialidade;
+	public void setEspecialidade(Especialidade Especialidade) {
+		this.Especialidade = Especialidade;
 	}
 
 	public Medico getMedico() {
-		return medico;
+		return Medico;
 	}
 
-	public void setMedico(Medico medico) {
-		this.medico = medico;
+	public void setMedico(Medico Medico) {
+		this.Medico = Medico;
 	}
 
 	public Paciente getPaciente() {
-		return paciente;
+		return Paciente;
 	}
 
-	public void setPaciente(Paciente paciente) {
-		this.paciente = paciente;
+	public void setPaciente(Paciente Paciente) {
+		this.Paciente = Paciente;
 	}
 
 	public LocalDate getDataConsulta() {

@@ -22,19 +22,19 @@ public class MedicoService {
 	}
 
 	@Transactional(readOnly = false)
-	public void salvar(Medico medico) {
+	public void salvar(Medico Medico) {
 		
-		repository.save(medico);
+		repository.save(Medico);
 	}
 
 	@Transactional(readOnly = false)
-	public void editar(Medico medico) {
-		Medico m2 = repository.findById(medico.getId()).get();
-		m2.setCrm(medico.getCrm());
-		m2.setDtInscricao(medico.getDtInscricao());
-		m2.setNome(medico.getNome());
-		if (!medico.getEspecialidades().isEmpty()) {
-			m2.getEspecialidades().addAll(medico.getEspecialidades());
+	public void editar(Medico Medico) {
+		Medico m2 = repository.findById(Medico.getId()).get();
+		m2.setCrm(Medico.getCrm());
+		m2.setDtInscricao(Medico.getDtInscricao());
+		m2.setNome(Medico.getNome());
+		if (!Medico.getEspecialidades().isEmpty()) {
+			m2.getEspecialidades().addAll(Medico.getEspecialidades());
 		}
 	}
 
@@ -46,8 +46,8 @@ public class MedicoService {
 
 	@Transactional(readOnly = false)
 	public void excluirEspecialidadePorMedico(Long idMed, Long idEsp) {
-		Medico medico = repository.findById(idMed).get();
-		medico.getEspecialidades().removeIf(e -> e.getId().equals(idEsp));
+		Medico Medico = repository.findById(idMed).get();
+		Medico.getEspecialidades().removeIf(e -> e.getId().equals(idEsp));
 	}
 
 	@Transactional(readOnly = true)

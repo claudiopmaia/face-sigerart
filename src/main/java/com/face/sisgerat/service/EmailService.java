@@ -29,7 +29,7 @@ public class EmailService {
 		context.setVariable("titulo", "Bem vindo a FACE");
 		context.setVariable("texto", "Precisamos que confirme seu cadastro, clicando no link abaixo");
 		context.setVariable("linkConfirmacao", 
-				"http://localhost:8080/u/confirmacao/cadastro?codigo=" + codigo);
+				"/u/confirmacao/cadastro?codigo=" + codigo);
 		
 		String html = template.process("email/confirmacao", context);
 		helper.setTo(destino);
@@ -39,7 +39,7 @@ public class EmailService {
 		
 		helper.addInline("logo", new ClassPathResource("/static/image/spring-security.png"));
 		
-		//mailSender.send(message);
+		mailSender.send(message);
 	}
 	
 	public void enviarPedidoRedefinicaoSenha(String destino, String verificador) throws MessagingException {
@@ -61,6 +61,6 @@ public class EmailService {
 
         helper.addInline("logo", new ClassPathResource("/static/image/spring-security.png"));  
        
-        //mailSender.send(message);		
+        mailSender.send(message);		
 	}
 }

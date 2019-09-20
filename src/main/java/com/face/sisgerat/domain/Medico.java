@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @SuppressWarnings("serial")
 @Entity
-@Table(name = "medicos")
+@Table(name = "Medicos")
 public class Medico extends AbstractEntity {
 
 	@Column(name = "nome", unique = true, nullable = false)
@@ -30,15 +30,15 @@ public class Medico extends AbstractEntity {
 	@JsonIgnore
 	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	@JoinTable(
-			name = "medicos_tem_especialidades",
-			joinColumns = @JoinColumn(name = "id_medico", referencedColumnName = "id"),
-			inverseJoinColumns = @JoinColumn(name = "id_especialidade", referencedColumnName = "id")
+			name = "Medicos_tem_Especialidades",
+			joinColumns = @JoinColumn(name = "id_Medico", referencedColumnName = "id"),
+			inverseJoinColumns = @JoinColumn(name = "id_Especialidade", referencedColumnName = "id")
     )
-	private Set<Especialidade> especialidades;
+	private Set<Especialidade> Especialidades;
 	
 	// evita recursividade quando o json de resposta for criado para a datatables.
 	@JsonIgnore
-	@OneToMany(mappedBy = "medico")
+	@OneToMany(mappedBy = "Medico")
 	private List<Agendamento> agendamentos;
 	
 	@OneToOne(cascade = CascadeType.REMOVE)
@@ -82,11 +82,11 @@ public class Medico extends AbstractEntity {
 	}
 
 	public Set<Especialidade> getEspecialidades() {
-		return especialidades;
+		return Especialidades;
 	}
 
-	public void setEspecialidades(Set<Especialidade> especialidades) {
-		this.especialidades = especialidades;
+	public void setEspecialidades(Set<Especialidade> Especialidades) {
+		this.Especialidades = Especialidades;
 	}
 
 	public List<Agendamento> getAgendamentos() {

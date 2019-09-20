@@ -31,8 +31,8 @@
 								<!--toast-->
 						</div>
 						
-						<form th:action="${medico.id == null} ? @{/medicos/salvar} : @{/medicos/editar}"
-							  th:object="${medico}"	method="POST" class="was-validated">
+						<form th:action="${Medico.id == null} ? @{/medicos/salvar} : @{/medicos/editar}"
+							  th:object="${Medico}"	method="POST" class="was-validated">
 							<div class="form-row">
 								<div class="form-group col-md-6">
 									<label for="nome" class="form-group">Nome Completo</label>
@@ -64,9 +64,9 @@
 								<div class="form-group">
 									<label for="autocomplete-especialidades">Especialidade(s)</label>
 									<input type="text" id="autocomplete-especialidades"
-										class="form-control" placeholder="suas especialidade são..." /> 
+										class="form-control" placeholder="suas Especialidade são..." /> 
 									<small class="form-text text-muted">Insira suas
-										especialidades médicas.</small>
+										Especialidades médicas.</small>
 										
 								</div>
 							</div>							
@@ -90,7 +90,7 @@
 						<hr />
 
 						<h2>Especialidades médicas</h2>
-						<table id="table-medico-especializacao" 
+						<table id="table-Medico-especializacao" 
 							class="table table-sm table-striped table-bordered nowrap"
 							style="width: 100%">
 							<thead class="thead-dark">
@@ -109,20 +109,20 @@
 		</main>
 		
 	</section>
-	<script	th:src="@{/js/medico.js(v=${version})}"	th:fragment="js"></script>
+	<script	th:src="@{/js/Medico.js(v=${version})}"	th:fragment="js"></script>
 	<script th:inline="javascript" th:fragment="inlinescript">
 	$(document).ready(function () {
 		moment.locale('pt-BR');
-		var idMedico = [[${medico.id != null ? medico.id : 0}]];
+		var idMedico = [[${Medico.id != null ? Medico.id : 0}]];
 		if (idMedico != 0) {
-			var table = $('#table-medico-especializacao').DataTable({
+			var table = $('#table-Medico-especializacao').DataTable({
 				searching: false,
 				lengthMenu: [3, 5],
 				processing: true,
 				serverSide: true,
 				responsive: true,
 				ajax: {
-					url: '/especialidades/datatables/server/medico/' + idMedico,
+					url: '/Especialidades/datatables/server/Medico/' + idMedico,
 					data: 'data'
 				},
 				columns: [
@@ -131,7 +131,7 @@
 					{orderable: false,
 					 data: 'id',
 						"render": function(id) {
-							return '<a class="btn btn-danger btn-sm btn-block" href="/medicos/id/' + idMedico + '/excluir/especializacao/' +
+							return '<a class="btn btn-danger btn-sm btn-block" href="/Medicos/id/' + idMedico + '/excluir/especializacao/' +
 								id +'" role="button" data-toggle="modal" data-target="#confirm-modal"><i class="fas fa-times-circle"></i></a>';
 						}
 					}
